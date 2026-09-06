@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🥗 SMARTMEAL — 7-Day Indian Meal Planner</title>
+    <meta name="description" content="Create your personalized 7-day Indian meal plan, grocery checklist, and nutrition summary.">
+    <meta name="keywords" content="meal planner, Indian meals, healthy eating, nutrition, meal prep">
+    <meta name="theme-color" content="#16a34a">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="topbar">
+    <div>
+        <h1>🥗 SmartMeal</h1>
+        <p>7-Day Indian Meal Planner</p>
+    </div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-card">
+            <div class="hero-badge">PERSONALIZED • INDIAN • PRACTICAL</div>
+            <h2>Eat better without complicated meal planning.</h2>
+            <p>Create a personalized 7-day Indian meal plan, grocery checklist and nutrition summary based on your profile.</p>
+        </div>
+    </section>
+
+    <section id="profile-form" class="card">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">STEP 1</span>
+                <h2>Your Profile</h2>
+            </div>
+            <span class="required-note">* Required</span>
+        </div>
+
+        <form id="user-form">
+            <div class="grid-container">
+                <label>Age *
+                    <input type="number" id="age" min="13" max="100" placeholder="e.g. 25" required>
+                </label>
+                <label>Gender
+                    <select id="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </label>
+                <label>Height (cm) *
+                    <input type="number" id="height" min="100" max="250" placeholder="e.g. 170" required>
+                </label>
+                <label>Weight (kg) *
+                    <input type="number" id="weight" min="25" max="300" step="0.1" placeholder="e.g. 70" required>
+                </label>
+                <label>Goal
+                    <select id="goal">
+                        <option value="Weight Loss">Weight Loss</option>
+                        <option value="Maintenance">Maintenance</option>
+                        <option value="Weight Gain">Weight Gain</option>
+                        <option value="Muscle Gain">Muscle Gain</option>
+                    </select>
+                </label>
+                <label>Dietary Preference
+                    <select id="dietary-preference">
+                        <option value="Pure Veg">Pure Veg</option>
+                        <option value="Non-Veg">Non-Veg</option>
+                        <option value="Jain">Jain</option>
+                        <option value="Vegan">Vegan</option>
+                        <option value="Eggitarian">Eggitarian</option>
+                    </select>
+                </label>
+                <label>Regional Cuisine
+                    <select id="regional-cuisine">
+                        <option value="North Indian">North Indian</option>
+                        <option value="South Indian">South Indian</option>
+                        <option value="Generic Indian">Generic Indian</option>
+                    </select>
+                </label>
+                <label>Foods You Like
+                    <input type="text" id="likes" placeholder="e.g. paneer, dal, rice">
+                </label>
+                <label>Foods to Avoid / Allergies
+                    <input type="text" id="allergies" placeholder="e.g. peanuts, dairy">
+                </label>
+                <label>Health Conditions
+                    <input type="text" id="health-conditions" placeholder="Optional">
+                </label>
+                <label>Daily Activity
+                    <select id="activity">
+                        <option value="Low">Low</option>
+                        <option value="Moderate">Moderate</option>
+                        <option value="High">High</option>
+                    </select>
+                </label>
+                <label>Workout Schedule
+                    <select id="workout-schedule">
+                        <option value="None">None</option>
+                        <option value="Light">Light</option>
+                        <option value="Moderate">Moderate</option>
+                        <option value="High">High</option>
+                    </select>
+                </label>
+                <label>Budget
+                    <select id="budget">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </label>
+                <label>Meals Per Day
+                    <select id="meals-per-day">
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </label>
+                <label>Cooking Time
+                    <select id="cooking-time">
+                        <option value="15 minutes">15 minutes</option>
+                        <option value="30 minutes">30 minutes</option>
+                        <option value="60+ minutes">60+ minutes</option>
+                    </select>
+                </label>
+            </div>
+            <button class="primary-btn" type="submit">✨ Generate My 7-Day Plan</button>
+        </form>
+        <p id="error-message" class="error"></p>
+    </section>
+
+    <section id="nutrition-summary" class="card hidden">
+        <div class="section-heading">
+            <div><span class="eyebrow">YOUR TARGET</span><h2>Nutrition Summary</h2></div>
+        </div>
+        <div class="stats-grid">
+            <div class="stat"><span>🔥</span><strong id="calories">—</strong><small>Daily Calories</small></div>
+            <div class="stat"><span>💪</span><strong id="protein">—</strong><small>Protein</small></div>
+            <div class="stat"><span>⚖️</span><strong id="bmi">—</strong><small>BMI</small></div>
+            <div class="stat"><span>🎯</span><strong id="goal-label">—</strong><small>Goal</small></div>
+        </div>
+        <p id="nutrition-note" class="info-note"></p>
+    </section>
+
+    <section id="daily-summary" class="card hidden">
+        <div class="section-heading"><div><span class="eyebrow">7 DAYS</span><h2>Daily Macro Summary</h2></div></div>
+        <div id="macros" class="macro-list"></div>
+    </section>
+
+    <section id="meal-plan" class="card hidden">
+        <div class="section-heading">
+            <div><span class="eyebrow">YOUR PLAN</span><h2>7-Day Meal Plan</h2></div>
+        </div>
+        <div id="days" class="days-grid"></div>
+    </section>
+
+    <section id="grocery-checklist" class="card hidden">
+        <div class="section-heading">
+            <div><span class="eyebrow">MEAL PREP</span><h2>Grocery Checklist</h2></div>
+            <button id="reset-grocery-list" class="secondary-btn">Reset</button>
+        </div>
+        <div id="grocery-category" class="grocery-grid"></div>
+    </section>
+</main>
+
+<footer>
+    <p><strong>SmartMeal</strong> © 2026</p>
+    <p>Eat well. Stay consistent. 💚</p>
+    <small>Nutrition values are estimates for general wellness planning and are not medical advice.</small>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
